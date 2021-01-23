@@ -16,8 +16,8 @@ module.exports = function check(str, bracketsConfig) {
       if (relevant[char] !== stack.pop()) return false;
     } else if (open.includes(char)) {
       stack.push(char);
-    } else if (close.includes(char)) {
-      if (relevant[char] !== stack.pop()) return false;
+    } else if (close.includes(char) && relevant[char] !== stack.pop()) {
+      return false;
     }
   }
 
